@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Design Yours - GlamGrip</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<!-- ✅ NAVIGATION BAR -->
+<div class="topnav">
+  <img src="img/Logo.png" alt="GlamGrip Logo" class="logo">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+        <a href="ourstory.html">Our Story</a>
+    <a href="DesignYours.html" class="active">Design Yours</a>
+    <a href="Cart.html">Cart</a>
+    <a href="FAQSupport.html">FAQ & Support</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ✅ DESIGN CUSTOMIZATION SECTION -->
+<section class="design-section">
+  <h1>🎨 Design Your GlamGrip</h1>
+  <p>Customize your GlamGrip by choosing colors and adding your name.</p>
+
+  <div class="customizer-container">
+    <!-- Customization Options -->
+    <div class="customizer-options">
+      <label for="lipstick-color"> Lipstick Color:</label>
+      <input type="color" id="lipstick-color" value="#b6004c">
+
+      <label for="liner-color">Lip Liner Color:</label>
+      <input type="color" id="liner-color" value="#e91e63">
+
+      <label for="engraving-text"> Engraving Name:</label>
+      <input type="text" id="engraving-text" placeholder="Your Name" maxlength="12">
+    </div>
+
+<!-- Product Preview -->
+<div class="product-preview">
+    <div class="glamgrip-mockup">
+      <div id="lipstick-part" class="color-part">Lipstick</div>
+      <div id="engraving">Your Name</div>
+      <div id="liner-part" class="color-part">Liner</div>
+    </div>
+  </div>
+  
+  <button class="cta-button" onclick="addToCart()">🛒 Add to Cart</button>
+  
+  <script>
+    function addToCart() {
+      const lipstickColor = document.getElementById('lipstick-color').value;
+      const linerColor = document.getElementById('liner-color').value;
+      const engravingText = document.getElementById('engraving-text').value || "Your Name";
+  
+      // Get existing cart or initialize empty array
+      let cart = JSON.parse(localStorage.getItem('glamGripCart')) || [];
+  
+      // Create item object
+      const item = {
+        lipstick: lipstickColor,
+        liner: linerColor,
+        engraving: engravingText,
+        quantity: 1
+      };
+  
+      // Add to cart array
+      cart.push(item);
+  
+      // Save back to localStorage
+      localStorage.setItem('glamGripCart', JSON.stringify(cart));
+  
+      // Navigate to cart page
+      window.location.href = 'Cart.html';
+    }
+  </script>
+  
+</section>
+
+<!-- ✅ JAVASCRIPT -->
+<script>
+  const lipstickInput = document.getElementById('lipstick-color');
+  const linerInput = document.getElementById('liner-color');
+  const engravingInput = document.getElementById('engraving-text');
+
+  const lipstickPart = document.getElementById('lipstick-part');
+  const linerPart = document.getElementById('liner-part');
+  const engraving = document.getElementById('engraving');
+
+  // Update preview live
+  lipstickInput.addEventListener('input', () => {
+    lipstickPart.style.backgroundColor = lipstickInput.value;
+  });
+
+  linerInput.addEventListener('input', () => {
+    linerPart.style.backgroundColor = linerInput.value;
+  });
+
+  engravingInput.addEventListener('input', () => {
+    engraving.textContent = engravingInput.value || "Your Name";
+  });
+
+  // Fake cart system using localStorage
+  function addToCart() {
+    const design = {
+      lipstickColor: lipstickInput.value,
+      linerColor: linerInput.value,
+      engraving: engravingInput.value || "Your Name"
+    };
+
+    let cart = JSON.parse(localStorage.getItem('glamgrip-cart')) || [];
+    cart.push(design);
+    localStorage.setItem('glamgrip-cart', JSON.stringify(cart));
+    alert("🎉 Your custom GlamGrip was added to the cart!");
+  }
+</script>
+
+<!-- ✅ FOOTER -->
+<!-- ✅ FOOTER -->
+<div class="footer">
+    <div class="footer-content">
+      <div class="footer-for-logo">
+        <img src="img/logo1.jpg" alt="Logo" class="logo">
+      </div>
+      <div class="footer-info">
+        <p>Email: <a href="mailto:Glamgrip@gmail.com">GlamGrip@gmail.com</a></p>
+        <p>Phone: +973 2225 66697</p>
+        <p>Glam Grip 2025. All rights reserved.</
+
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

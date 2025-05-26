@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlamGrip - CONTACT</title>
+  <link rel="stylesheet" href="style1.css"> <!-- Link to the external CSS -->
+
+  <!-- ✅ JavaScript should run AFTER DOM is ready -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Clear previous messages
+        document.getElementById('errorMessage').innerHTML = '';
+        document.getElementById('successMessage').innerHTML = '';
+
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        let errorMessage = '';
+
+        // Validation
+        if (name.length < 3) {
+          errorMessage += 'Name must be at least 3 characters long.<br>';
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+          errorMessage += 'Please enter a valid email address.<br>';
+        }
+        if (message.length < 10) {
+          errorMessage += 'Message must be at least 10 characters long.<br>';
+        }
+
+        // Show messages
+        if (errorMessage) {
+          document.getElementById('errorMessage').innerHTML = errorMessage;
+        } else {
+          document.getElementById('successMessage').innerHTML = 'Thank you for your message!';
+          document.getElementById('contactForm').reset();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <section class="homepage-body"> <!--section for all the page-->
+
+    <!-- ✅ NAVBAR -->
+    <div class="topnav">
+      <img src="img/Logo.png" alt="Logo" class="logo"> <!-- Logo -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+                <a href="ourstory.html">Our story</a>
+        <a href="DesignYours.html">Design Yours</a>
+        <a href="Cart.html">Cart</a>
+        <a href="FAQSupport.html">FAQ & Support</a>
+        <a href="Contact.html" class="active">Contact</a>
+      </div>
+
+        
+      </div>
+    </div>
+
+    <!-- ✅ CONTACT PAGE HEADER -->
+    <div class="for-contact">
+      <h2 class="contact-title">Get in Touch</h2>
+      <p class="contact-description">
+       Hey gorgeous! Got a question about GlamGrip or just want to chat about your fave shade? We’re here to help with anything you need don’t be shy, reach out!
+      </p>
+    </div>  
+
+    <!-- ✅ CONTACT FORM -->
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button id="button-contact" type="submit">Send Message</button>
+      </form>
+
+      <!-- ✅ Feedback Messages -->
+      <div id="errorMessage"></div>
+      <div id="successMessage"></div>
+    </div>
+
+    <!-- ✅ FOOTER -->
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-for-logo">
+          <img src="img/logo1.jpg" alt="Logo" class="logo">
+        </div>
+        <div class="footer-info">
+          <p>Email: <a href="mailto:Glamgrip@gmail.com">GlamGrip@gmail.com</a></p>
+          <p>Phone: +973 2225 66697</p>
+          <p>Glam Grip 2025. All rights reserved.</
